@@ -21,10 +21,8 @@ android {
         if (versionPropsFile.canRead()) {
             def Properties versionProps = new Properties()
             versionProps.load(new FileInputStream(versionPropsFile))
-            System.out.println("Before add")
             versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
             versionProps['VERSION_BUILD'] = versionBuild.toString()
-            System.out.println("After Add")
             versionProps.store(versionPropsFile.newWriter(), null)
         } else {
             throw new FileNotFoundException("Could not read version.properties!")

@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    def versionPropsFile = file('version.properties')
+    def versionBuild
+
+    /*Setting default value for versionBuild which is the last incremented value stored in the file */
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        versionBuild = versionProps['VERSION_BUILD'].toInteger()
+    } else {
+        throw new FileNotFoundException("Could not read version.properties!")
+    }
+
+
+    /*Wrapping inside a method avoids auto incrementing on every gradle task run. Now it runs only when we build apk*/
+        if (versionPropsFile.canRead()) {
+            def Properties versionProps = new Properties()
+            versionProps.load(new FileInputStream(versionPropsFile))
+            System.out.println("Before add")
+            versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
+            versionProps['VERSION_BUILD'] = versionBuild.toString()
+            System.out.println("After Add")
+            versionProps.store(versionPropsFile.newWriter(), null)
+        } else {
+            throw new FileNotFoundException("Could not read version.properties!")
+        }
+
+
+
+    defaultConfig {
+        applicationId "com.sample.pocapplication"
+        minSdkVersion 18
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1." + versionBuild
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all{ output ->
+                    //def name="pocAndroid-${variant.versionName}.apk"
+                    def name="pocAndroid.apk"
+                    output.outputFileName = name
+                    }
+                }
+        }
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

@@ -56,7 +56,7 @@ android {
             applicationVariants.all { variant ->
                 variant.outputs.all{ output ->
                     //def name="pocAndroid-${variant.versionName}.apk"
-                    def name="pocAndroid.apk"
+                    def name="androidPOC.apk"
                     output.outputFileName = name
                     }
                 }

@@ -1,10 +1,15 @@
-node{
-  stages{
-     stage('Git Checkout'){
-	     checkout SCM
-		 }
-	 stage('Gradle build'){
-         sh "./gradlew clean assembleRelease"
+pipeline {
+	agents any
+	stages {
+	    stage('Git Checkout') {
+		    steps{
+			    checkout SCM
+		    }
+	    }
+	    stage('Gradle build') {
+		    steps{
+			    sh "./gradlew clean assembleRelease"
+		    }
          }
     }	
 }	

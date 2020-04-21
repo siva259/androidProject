@@ -1,6 +1,6 @@
 node {
      stages{
-         stage('Checkout'){
+         stage('checkout'){
              steps {
 		  checkout SCM
 	        }

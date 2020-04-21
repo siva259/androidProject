@@ -1,14 +1,14 @@
 node {
-     stages {
+   //  stages {
          stage('checkout'){
-             steps {
+    //         steps {
 		  checkout SCM
-	        }
+//	        }
 	    }
-	   stage('Build'){
-	        steps {
-                     sh "./gradlew clean assembleRelease"
-	          }
-            }
-       }	
+	//   stage('Build'){
+	//        steps {
+       //              sh "./gradlew clean assembleRelease"
+	//          }
+        //    }
+     //  }	
  }	

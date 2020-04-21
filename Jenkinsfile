@@ -1,11 +1,11 @@
 node {
      stages{
-         stage('Git Checkout'){
+         stage('Checkout'){
              steps {
 		  checkout SCM
 	        }
 	    }
-	   stage('Gradle build'){
+	   stage('Build'){
 	        steps {
                      sh "./gradlew clean assembleRelease"
 	          }

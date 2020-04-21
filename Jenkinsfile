@@ -1,15 +1,15 @@
 pipeline {
-	agents any
-	stages {
-	    stage('Git Checkout') {
-		    steps{
-			    checkout SCM
-		    }
-	    }
-	    stage('Gradle build') {
-		    steps{
-			    sh "./gradlew clean assembleRelease"
-		    }
-         }
-    }	
-}	
+     agents any
+	 stages{
+            stage('Git Checkout'){
+		steps {
+		       checkout SCM
+	           }
+	       }
+	   stage('Gradle build'){
+	        steps {
+                     sh "./gradlew clean assembleRelease"
+	          }
+            }
+       }	
+ }	

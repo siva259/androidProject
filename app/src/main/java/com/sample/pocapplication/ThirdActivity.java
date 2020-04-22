@@ -29,7 +29,7 @@ public class ThirdActivity extends AppCompatActivity {
 
 
         PDFView pdfView=(PDFView)findViewById(R.id.pdfView);
-        pdfView.fromAsset("android_POC_ANDROID_ToolsPipeline-converted.pdf").pages(0).load();
+        pdfView.fromAsset("android_POC_ANDROID_ToolsPipeline-converted.pdf").load();
 
 
     }

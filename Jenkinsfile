@@ -1,7 +1,7 @@
 node {
-    stage('checkout'){
-         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pocandroid/androidProject.git']]])
-	   }
+    //stage('checkout'){
+      //   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/pocandroid/androidProject.git']]])
+	/*   }
     stage('Build'){
         withGradle{
             sh "chmod +x gradlew"

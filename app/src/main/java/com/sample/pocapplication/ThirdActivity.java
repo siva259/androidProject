@@ -1,4 +1,4 @@
-package com.sample.pocapplication;
+/*package com.sample.pocapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
@@ -33,4 +33,4 @@ public class ThirdActivity extends AppCompatActivity {
 
 
     }
-}
+}*/

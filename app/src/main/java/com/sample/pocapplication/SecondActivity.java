@@ -23,17 +23,17 @@ public class SecondActivity extends AppCompatActivity {
         textView.setTextColor(Color.BLUE);
         btnPPT=(Button)findViewById(R.id.btnPPT);
 
-        btnPPT.setOnClickListener(new View.OnClickListener() {
+       /* btnPPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validateNew();
             }
-        });
+        });*/
     }
 
-    public void validateNew(){
+  /*  public void validateNew(){
         Intent in=new Intent(this,ThirdActivity.class);
         startActivity(in);
-    }
+    }*/
 
 }

@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                 validate(Name.getText().toString(),Password.getText().toString(),user,passwd);
             }
         });
-
+        AppCenter.start(getApplication(), "03d2977e-0a16-4557-af34-edb684b1c488",
+                  Analytics.class, Crashes.class);
 
     }
 

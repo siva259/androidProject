@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private Button Login;
     private TextView Invalid;
     private int counter=3;
+    String user="";
+    String passwd="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +38,30 @@ public class MainActivity extends AppCompatActivity {
         Info.setText("No of attempts remaining: 3");
         Invalid.setVisibility(View.INVISIBLE);
 
+        String encryptuser="9F58976A4FF0DC658140A8665A5635D7";
+        String encryptpwd="8D32C2FFFEEE74CEBCBF6327154A2F9A";
+
+        try {
+            user = AESUtils.decrypt(encryptuser);
+            passwd=AESUtils.decrypt(encryptpwd);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate(Name.getText().toString(),Password.getText().toString());
+                validate(Name.getText().toString(),Password.getText().toString(),user,passwd);
             }
         });
-
+        AppCenter.start(getApplication(), "03d2977e-0a16-4557-af34-edb684b1c488",
+                  Analytics.class, Crashes.class);
 
     }
 
-    private void validate(String userName,String userPassword){
-        if((userName.equals("Admin")) && (userPassword.equals("admin123"))){
+    private void validate(String userName,String userPassword,String user,String passwd){
+        if((userName.equals(user)) && (userPassword.equals(passwd))){
             //Intent intent=new Intent(MainActivity.this,SecondActivity.class);
             //Intent intent=new Intent(MainActivity.this,SecondActivity.class);
             Invalid.setVisibility(View.INVISIBLE);
